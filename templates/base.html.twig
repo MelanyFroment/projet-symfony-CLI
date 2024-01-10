@@ -4,16 +4,37 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <!-- Ajoutez des liens vers d'autres feuilles de style si nécessaire -->
+            <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <!-- Ajoutez des liens vers d'autres scripts JavaScript si nécessaire -->
+            <script src="{{ asset('js/custom.js') }}"></script>
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            <h1>Mon Site Symfony CLI</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('app_home_page') }}">Accueil</a></li>
+                    <li><a href="{{ path('app_products_index') }}">Produits</a></li>
+                    <!-- Ajoutez d'autres liens de navigation ici -->
+                </ul>
+            </nav>
+        </header>
+
+        <div id="content">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <footer>
+            <p>&copy; {{ 'now'|date('Y') }} Mon Site Symfony CLI. Tous droits réservés.</p>
+        </footer>
     </body>
 </html>
