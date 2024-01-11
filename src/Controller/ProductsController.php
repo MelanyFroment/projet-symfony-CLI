@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+use App\Entity\Product;
+use App\Form\ProductFormType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,8 +15,13 @@ class ProductsController extends AbstractController
      */
     public function index(): Response
     {
+
+        $product = new Product();
+
+        $form = $this->createForm(ProductFormType::class, $product);
+
         return $this->render('products/index.html.twig', [
-            'controller_name' => 'ProductsController',
+            'formProduct' => $form->createView(),
         ]);
     }
 }
