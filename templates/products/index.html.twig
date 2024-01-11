@@ -3,9 +3,29 @@
 {% block title %}Hello ProductsController!{% endblock %}
 
 {% block body %}
-{{ form_start(formProduct) }}
-    {{ form_row(formProduct.name) }}
-    {{ form_row(formProduct.description) }}
-    {{ form_row(formProduct.price) }}
-{{ form_end(formProduct) }}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 71vh;">
+    <div class="card shadow-lg" style="width: 30rem;">
+        <div class="card-body">
+            <h1 class="card-title text-center">Ajouter un Nouveau Produit</h1>
+            {{ form_start(formProduct, {'attr': {'class': 'form-group'}}) }}
+                <div class="mb-3">
+                    {{ form_row(formProduct.name, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(formProduct.description, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(formProduct.quantity, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(formProduct.price, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary">Ajouter</button>
+                </div>
+            {{ form_end(formProduct) }}
+        </div>
+    </div>
+</div>
 {% endblock %}
